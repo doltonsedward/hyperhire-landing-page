@@ -1,3 +1,11 @@
+'use client';
+
+import HeroBanner from '@components/section/HeroSection';
+
 export default function Home() {
-  return <div>Hai</div>;
+  return (
+    <div>
+      <HeroBanner />
+    </div>
+  );
 }
