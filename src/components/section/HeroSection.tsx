@@ -1,4 +1,5 @@
 import { Header } from '@components/composite/Header';
+import HeroOverview from '@components/composite/HeroOverview';
 import React from 'react';
 
 const HeroSection = () => {
@@ -12,6 +13,7 @@ const HeroSection = () => {
         ]}
         ctaLabel="문의하기"
       />
+      <HeroOverview />
     </div>
   );
 };
