@@ -1,7 +1,5 @@
 import { Badge } from '@components/base/Badge';
 import { Heading } from '@components/base/Heading';
-import Text from '@components/base/Text';
-import CheckboxGroup from '@components/composite/CheckboxGroup';
 import React from 'react';
 import FeaturedSection from './FeaturedSection';
 

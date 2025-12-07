@@ -25,17 +25,21 @@ const FeaturedSection = () => {
   return (
     <div>
       {/* mobile view */}
-      <Text className="visible md:hidden text-[#FBFF23]">개발자가 필요하신가요?</Text>
-      <CheckboxGroup className="md:hidden" items={['한국어 능력', '업무 수행 능력', '겸업 여부', '평판 조회']} />
+      <div className="md:hidden">
+        <CheckboxGroup className="md:hidden" items={['한국어 능력', '업무 수행 능력', '겸업 여부', '평판 조회']} />
+        <Text className="text-[#FBFF23] font-black underline decoration-auto mt-4">개발자가 필요하신가요?</Text>
+      </div>
 
       {/* desktop view */}
-      <Text variant="subhead" className="mb-[60px] underline underline-offset-auto decoration-solid">
-        개발자가 필요하신가요?
-      </Text>
-      <div className="flex gap-12">
-        {FEATURED_DATA.map((item) => (
-          <FeaturedItem key={item.id} title={item.title} content={item.content} />
-        ))}
+      <div className="hidden md:block">
+        <Text variant="subhead" className="mb-[60px] underline underline-offset-auto decoration-solid">
+          개발자가 필요하신가요?
+        </Text>
+        <div className="flex gap-12">
+          {FEATURED_DATA.map((item) => (
+            <FeaturedItem key={item.id} title={item.title} content={item.content} />
+          ))}
+        </div>
       </div>
     </div>
   );

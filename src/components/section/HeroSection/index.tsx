@@ -3,6 +3,7 @@ import HeroOverview from './HeroOverview';
 import React from 'react';
 import Tooltip from '@components/base/Tooltip';
 import TalentSection from './TalentSection';
+import FeatureCategories from './FeatureCategories';
 
 const mockTalents = [
   {
@@ -42,16 +43,19 @@ const HeroSection = () => {
         ]}
         ctaLabel="문의하기"
       />
-      <div className="constrain grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div className="constrain grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-[60px]">
         <div className="lg:pr-8 w-full">
           <HeroOverview />
         </div>
-        {/* Right COntent */}
+
+        {/* Right Content */}
         <div className="mt-4 lg:mt-0 justify-center w-full px-4 sm:px-0">
           <Tooltip />
           <TalentSection talents={mockTalents} />
         </div>
       </div>
+
+      <FeatureCategories />
     </div>
   );
 };
