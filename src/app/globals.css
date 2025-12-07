@@ -21,6 +21,12 @@ body {
 }
 
 @layer utilities {
+  .constrain {
+    @apply px-4 mx-auto;
+  }
+}
+
+@layer utilities {
   .text-balance {
     text-wrap: balance;
   }
