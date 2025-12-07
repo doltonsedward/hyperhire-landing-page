@@ -43,13 +43,13 @@ const HeroSection = () => {
         ctaLabel="문의하기"
       />
       <div className="constrain grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div className="lg:w-1/2 lg:pr-8 w-full">
+        <div className="lg:pr-8 w-full">
           <HeroOverview />
-          {/* Right COntent */}
-          <div className="lg:w-1/2 mt-4 lg:mt-0 justify-center w-full px-4 sm:px-0">
-            <Tooltip />
-            <TalentSection talents={mockTalents} />
-          </div>
+        </div>
+        {/* Right COntent */}
+        <div className="mt-4 lg:mt-0 justify-center w-full px-4 sm:px-0">
+          <Tooltip />
+          <TalentSection talents={mockTalents} />
         </div>
       </div>
     </div>
