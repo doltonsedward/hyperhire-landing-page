@@ -1,6 +1,6 @@
 import IconPropsType from './types';
 
-const DollarCircleIcon: React.FC<IconPropsType> = ({ size = 26 }) => (
+const DollarCircleIcon = ({ size = 26 }: IconPropsType) => (
   <svg fill="none" viewBox="0 0 26 26" width={size} height={size} xmlns="http://www.w3.org/2000/svg">
     <circle cx="13" cy="13" r="13" fill="#BBF3D2" />
     <path
