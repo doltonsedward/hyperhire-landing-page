@@ -34,7 +34,7 @@ const mockTalents = [
 
 const HeroSection = () => {
   return (
-    <div className="bg-hero-gradient bg-[url('/assets/hero-background.png')] bg-cover bg-center bg-no-repeat bg-blend-overlay min-h-screen">
+    <div className="bg-hero-gradient bg-[url('/assets/hero-background.png')] bg-cover bg-center bg-no-repeat bg-blend-overlay min-h-screen overflow-hidden">
       <Header
         logo="HyperHire"
         navItems={[
