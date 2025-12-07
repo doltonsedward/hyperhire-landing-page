@@ -21,7 +21,7 @@ const COMPANIES_INFO = [
   {
     label: '주소 ADDRESS',
     content: '서울특별시 강남대로 479, 지하 1층 238호 ',
-    contentInEnglish: 'D-138, Street number 11, Jagjeet Nagar, North East Delhi, New Delhi, 110053 India ',
+    contentInEnglish: `D-138, Street number 11, Jagjeet Nagar, North East Delhi, New Delhi,\n110053 India`,
   },
 ];
 
@@ -39,7 +39,7 @@ const CompanyInfoSection = () => {
         ))}
       </div>
 
-      <Text variant="caption" className="font-black leading-5 mt-7">
+      <Text variant="caption" className="font-black leading-5 mt-7 text-blue-gray-60">
         ⓒ 2023 Hyperhire
       </Text>
     </div>

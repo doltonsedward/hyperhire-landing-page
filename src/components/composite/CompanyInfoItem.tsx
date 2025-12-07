@@ -9,7 +9,7 @@ type CompanyInfoItemPropsType = {
 
 const CompanyInfoItem = ({ label, content, contentInEnglish }: CompanyInfoItemPropsType) => {
   return (
-    <div>
+    <div className="mb-[36px]">
       <Text variant="caption" className="mb-3 text-blue-gray-80 font-black leading-4">
         {label}
       </Text>
