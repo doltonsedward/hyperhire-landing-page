@@ -9,7 +9,7 @@ interface CheckboxGroupProps {
   columns?: 1 | 2 | 3 | 4;
 }
 
-export const CheckboxGroup = ({
+const CheckboxGroup = ({
   items,
   className = '',
   variant = 'primary',
@@ -33,3 +33,5 @@ export const CheckboxGroup = ({
     </div>
   );
 };
+
+export default CheckboxGroup;
