@@ -15,7 +15,6 @@ interface TalentCardProps {
 export const TalentCard = ({ name, avatar, country, experience, skills, className = '' }: TalentCardProps) => {
   return (
     <div className={`bg-white rounded-3xl p-4 sm:p-8 shadow-2xl relative w-full max-w-xs mx-auto ${className}`}>
-      {/* Avatar with Flag */}
       <div className="flex justify-center mb-4 sm:mb-6 relative">
         <div className="relative">
           <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-gray-200 overflow-hidden">
@@ -27,13 +26,10 @@ export const TalentCard = ({ name, avatar, country, experience, skills, classNam
         </div>
       </div>
 
-      {/* Name */}
       <h3 className="text-lg sm:text-2xl font-bold text-gray-900 text-center mb-1 sm:mb-2">{name}</h3>
 
-      {/* Experience */}
       <p className="text-blue-500 text-center mb-4 sm:mb-8 font-medium text-base sm:text-lg">{experience}</p>
 
-      {/* Skills */}
       <div className="space-y-2 sm:space-y-3">
         {skills.map((skill, index) => (
           <div key={index} className="flex justify-center">

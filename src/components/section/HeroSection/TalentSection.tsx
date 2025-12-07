@@ -2,7 +2,7 @@
 
 import type React from 'react';
 import { useState } from 'react';
-import { TalentCard } from './TalentCard';
+import { TalentCard } from '../../composite/TalentCard';
 
 interface TalentData {
   id: number;
@@ -18,7 +18,7 @@ interface TalentSliderProps {
   className?: string;
 }
 
-export const TalentSlider = ({ talents, className = '' }: TalentSliderProps) => {
+const TalentSection = ({ talents, className = '' }: TalentSliderProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextSlide = () => {
@@ -130,3 +130,5 @@ export const TalentSlider = ({ talents, className = '' }: TalentSliderProps) => 
     </div>
   );
 };
+
+export default TalentSection;
