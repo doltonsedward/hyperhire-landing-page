@@ -17,11 +17,39 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .constrain {
+    @apply px-4 mx-auto max-w-[1280px];
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* Custom Swiper Styles */
+.talent-swiper {
+  padding: 20px 0;
+}
+
+.talent-swiper .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+}
+
+.talent-swiper .swiper-pagination-bullet-active {
+  background: white;
+}
+
+.talent-swiper .swiper-slide {
+  height: auto;
+  display: flex;
+  align-items: center;
 }
