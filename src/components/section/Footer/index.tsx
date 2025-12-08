@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import BrandingSection from './BrandingSection';
 import CompanyInfoSection from './CompanyInfoSection';
