@@ -7,7 +7,8 @@ import FeatureCategories from './FeatureCategories';
 import TalentsSection from './TalentSection';
 import { FeatureDataType, TalentDataType } from '../../../types/api';
 import BenefitSection from './BenefitSection';
-import PriceBadge from '@components/composite/PriceBadge';
+import Badge from '@components/composite/Badge';
+import DollarCircleIcon from '@components/base/Icons/DollarCircleIcon';
 
 type HeroSectionPropsType = {
   talents: TalentDataType[];
@@ -32,7 +33,9 @@ const HeroSection = ({ talents, features, benefits }: HeroSectionPropsType) => (
 
       {/* Right Content */}
       <div className="mt-4 lg:mt-0 justify-center w-full px-4 sm:px-0">
-        <PriceBadge amount="월 100만원" tailType="center" />
+        <Badge icon={<DollarCircleIcon />} bgColor="#E9F7EF" textColor="#00C696">
+          월 100만원
+        </Badge>
         <TalentsSection talentsData={talents} />
       </div>
 
