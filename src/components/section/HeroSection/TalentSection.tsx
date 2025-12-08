@@ -1,60 +1,17 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
-import { TalentDataType } from '../../../types/api/talents';
 import TalentCard from '@components/composite/TalentCard';
+import CaretLeftIcon from '@components/base/Icons/CaretLeftIcon';
+import CaretRightIcon from '@components/base/Icons/CaretRightIcon';
+import { TalentDataType } from '../../../types/api/talents';
 
-const talentsData: TalentDataType[] = [
-  {
-    id: 1,
-    name: 'Abhishek Gupta',
-    title: '마케팅 전문가',
-    location: '인도',
-    flag: 'India Flag',
-    match: '2y+',
-    skills: ['마케팅 전문가', '인스타그램 관리', '광고 집행'],
-  },
-  {
-    id: 2,
-    name: 'Maria Silva',
-    title: 'UI/UX Designer',
-    location: '브라질',
-    flag: 'Brazil Flag',
-    match: '3y+',
-    skills: ['Figma 마스터', '모션 디자인', '브랜딩'],
-  },
-  {
-    id: 3,
-    name: '김지은',
-    title: '프론트엔드 개발자',
-    location: '한국',
-    flag: 'South Korea Flag',
-    match: '4y+',
-    skills: ['React', 'TypeScript', 'Next.js'],
-  },
-  {
-    id: 4,
-    name: 'Alex Chen',
-    title: '백엔드 엔지니어',
-    location: '대만',
-    flag: 'Taiwan Flag',
-    match: '5y+',
-    skills: ['Node.js', 'Python', 'AWS'],
-  },
-  {
-    id: 5,
-    name: 'Sofia Müller',
-    title: '데이터 사이언티스트',
-    location: '독일',
-    flag: 'Germany Flag',
-    match: '3y+',
-    skills: ['Python', 'ML', 'TensorFlow'],
-  },
-];
+type TalentsSectionPropsType = {
+  talentsData: TalentDataType[];
+};
 
-export default function TalentsSection() {
+export default function TalentsSection({ talentsData }: TalentsSectionPropsType) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const next = () => {
@@ -77,20 +34,20 @@ export default function TalentsSection() {
   };
 
   return (
-    <div className="relative w-full max-w-5xl mx-auto py-20 overflow-hidden">
+    <div className="relative w-full max-w-5xl mx-auto py-20 ">
       <div className="relative h-96 flex items-center justify-center items-center">
         {/* Arrow Left */}
         <button
           onClick={prev}
-          className="absolute left-8 z-50 bg-white/90 hover:bg-white rounded-full p-4 shadow-xl transition-all hover:scale-110">
-          <ChevronLeft className="w-10 h-10 text-gray-800" />
+          className="absolute left-4 md:left-8 z-50 bg-transparent p-4 transition-all hover:scale-110">
+          <CaretLeftIcon />
         </button>
 
         {/* Arrow Right */}
         <button
           onClick={next}
-          className="absolute right-8 z-50 bg-white/90 hover:bg-white rounded-full p-4 shadow-xl transition-all hover:scale-110">
-          <ChevronRight className="w-10 h-10 text-gray-800" />
+          className="absolute right-4 md:right-8 z-50 bg-transparent p-4 transition-all hover:scale-110">
+          <CaretRightIcon />
         </button>
 
         {/* Cards Container dengan perspective */}
@@ -104,7 +61,6 @@ export default function TalentsSection() {
 
             if (position === 'center') {
               cardStyle = { x: 0, y: 0, scale: 1, opacity: 1, zIndex: 30 };
-              containerClass = 'ring-4 ring-cyan-400';
             } else if (position === 'left') {
               cardStyle = { x: -200, y: 20, scale: 0.85, opacity: 0.6, zIndex: 20 };
             } else if (position === 'right') {

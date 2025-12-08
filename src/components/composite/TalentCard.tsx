@@ -7,9 +7,7 @@ type TalentCardPropsType = {
 
 const TalentCard = ({ talent, isActive }: TalentCardPropsType) => (
   <div
-    className={`bg-white rounded-3xl shadow-2xl overflow-hidden transition-all duration-300 ${
-      isActive ? 'ring-4 ring-cyan-400' : ''
-    }`}
+    className="bg-white rounded-3xl shadow-2xl overflow-hidden transition-all duration-300"
     style={{ width: '340px' }}>
     <div className="p-8 text-center">
       {/* Avatar */}

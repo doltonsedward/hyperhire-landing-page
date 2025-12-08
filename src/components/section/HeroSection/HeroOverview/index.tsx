@@ -2,8 +2,13 @@ import { Badge } from '@components/base/Badge';
 import { Heading } from '@components/base/Heading';
 import React from 'react';
 import FeaturedSection from './FeaturedSection';
+import { FeatureDataType } from '../../../../types/api';
 
-const HeroOverview = () => {
+type HeroOverViewPropsType = {
+  featuredData: FeatureDataType[];
+};
+
+const HeroOverview = ({ featuredData }: HeroOverViewPropsType) => {
   return (
     <div className="space-y-6">
       <Badge variant="accent" className="w-fit">
@@ -17,7 +22,7 @@ const HeroOverview = () => {
         법률 및 인사관리 부담없이{'\n'}
         1주일 이내에 원격으로 채용해보세요.
       </Heading>
-      <FeaturedSection />
+      <FeaturedSection featuredData={featuredData} />
     </div>
   );
 };
