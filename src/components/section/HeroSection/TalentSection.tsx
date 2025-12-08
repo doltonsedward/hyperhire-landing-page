@@ -34,7 +34,7 @@ export default function TalentsSection({ talentsData }: TalentsSectionPropsType)
   };
 
   return (
-    <div className="relative w-full max-w-5xl mx-auto py-20 ">
+    <div className="relative w-full max-w-5xl mx-auto py-6 md:pt-12">
       <div className="relative h-96 flex items-center justify-center items-center">
         {/* Arrow Left */}
         <button
@@ -77,7 +77,7 @@ export default function TalentsSection({ talentsData }: TalentsSectionPropsType)
                 transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }} // easing super smooth
                 animate={cardStyle}
                 className={`absolute ${containerClass}`}>
-                <TalentCard talent={talent} isActive={position === 'center'} />
+                <TalentCard talent={talent} />
               </motion.div>
             );
           })}

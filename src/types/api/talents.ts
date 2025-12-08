@@ -3,7 +3,8 @@ export type TalentDataType = {
   name: string;
   title: string;
   location: string;
-  flag: string;
+  flagUrl: string;
   match: string;
   skills: string[];
+  profileUrl: string;
 };

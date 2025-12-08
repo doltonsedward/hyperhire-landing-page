@@ -3,11 +3,11 @@
 import Header from '@components/composite/Header';
 import HeroOverview from './HeroOverview';
 import React from 'react';
-import Tooltip from '@components/base/Tooltip';
 import FeatureCategories from './FeatureCategories';
 import TalentsSection from './TalentSection';
 import { FeatureDataType, TalentDataType } from '../../../types/api';
 import BenefitSection from './BenefitSection';
+import PriceBadge from '@components/composite/PriceBadge';
 
 type HeroSectionPropsType = {
   talents: TalentDataType[];
@@ -32,8 +32,7 @@ const HeroSection = ({ talents, features, benefits }: HeroSectionPropsType) => (
 
       {/* Right Content */}
       <div className="mt-4 lg:mt-0 justify-center w-full px-4 sm:px-0">
-        <Tooltip />
-        {/* <TalentSection talents={mockTalents} /> */}
+        <PriceBadge amount="월 100만원" tailType="center" />
         <TalentsSection talentsData={talents} />
       </div>
 

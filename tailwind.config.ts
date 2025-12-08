@@ -16,8 +16,10 @@ const config: Config = {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         'blue-gray': {
+          40: '#C1C5CF',
           80: '#343741',
           60: '#5E626F',
+          90: '#24252F',
         },
       },
     },
