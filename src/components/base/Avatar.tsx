@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type React from 'react';
 
 interface AvatarProps {
@@ -16,7 +17,7 @@ export const Avatar = ({ src, alt, size = 'md', className = '' }: AvatarProps) =
 
   return (
     <div className={`${sizes[size]} rounded-full overflow-hidden bg-gray-100 ${className}`}>
-      <img src={src} alt={alt} className="w-full h-full object-cover" />
+      <Image src={src} alt={alt} className="w-full h-full object-cover" />
     </div>
   );
 };

@@ -1,14 +1,12 @@
 import type React from 'react';
-import { motion, Variants } from 'framer-motion';
 
 interface TextProps {
   variant?: 'subhead' | 'body' | 'small' | 'caption' | 'title';
   children: React.ReactNode;
   className?: string;
-  itemVariants?: Variants;
 }
 
-const Text = ({ variant = 'body', children, className = '', itemVariants }: TextProps) => {
+const Text = ({ variant = 'body', children, className = '' }: TextProps) => {
   const variants = {
     caption: 'text-xs text-muted-foreground', // font-size: 12px, line-height: 16px, muted color
     small: 'text-sm leading-relaxed', // font-size: 14px, line-height: 20px

@@ -6,8 +6,6 @@ import TalentCard from '@components/composite/TalentCard';
 import CaretLeftIcon from '@components/base/Icons/CaretLeftIcon';
 import CaretRightIcon from '@components/base/Icons/CaretRightIcon';
 import { TalentDataType } from '../../../types/api/talents';
-import Badge from '@components/composite/Badge';
-import DollarCircleIcon from '@components/base/Icons/DollarCircleIcon';
 
 type TalentsSectionPropsType = {
   talentsData: TalentDataType[];
@@ -59,7 +57,7 @@ export default function TalentsSection({ talentsData }: TalentsSectionPropsType)
 
             // Tentukan style berdasarkan posisi
             let cardStyle = {};
-            let containerClass = '';
+            const containerClass = '';
 
             if (position === 'center') {
               cardStyle = { x: 0, y: 0, scale: 1, opacity: 1, zIndex: 30 };
