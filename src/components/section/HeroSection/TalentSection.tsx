@@ -6,6 +6,8 @@ import TalentCard from '@components/composite/TalentCard';
 import CaretLeftIcon from '@components/base/Icons/CaretLeftIcon';
 import CaretRightIcon from '@components/base/Icons/CaretRightIcon';
 import { TalentDataType } from '../../../types/api/talents';
+import Badge from '@components/composite/Badge';
+import DollarCircleIcon from '@components/base/Icons/DollarCircleIcon';
 
 type TalentsSectionPropsType = {
   talentsData: TalentDataType[];

@@ -1,12 +1,14 @@
-import type React from 'react';
+import { motion, Variants } from 'framer-motion';
+import React from 'react';
 
 interface HeadingProps {
   level: 1 | 2 | 3 | 4 | 5 | 6;
   children: React.ReactNode;
   className?: string;
+  variants?: Variants;
 }
 
-export const Heading = ({ level, children, className = '' }: HeadingProps) => {
+export const Heading = ({ level, children, className = '', variants }: HeadingProps) => {
   const Tag = `h${level}` as const;
   const sizes = {
     1: 'text-4xl md:text-5xl font-bold',
@@ -16,5 +18,12 @@ export const Heading = ({ level, children, className = '' }: HeadingProps) => {
     5: 'text-lg md:text-xl font-semibold',
     6: 'text-base md:text-lg font-semibold',
   };
-  return <Tag className={`${sizes[level]} ${className}`}>{children}</Tag>;
+  return React.createElement(
+    motion[Tag],
+    {
+      className: `${sizes[level]} ${className}`,
+      variants,
+    },
+    children,
+  );
 };

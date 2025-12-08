@@ -1,5 +1,4 @@
-import DollarCircleIcon from '@components/base/Icons/DollarCircleIcon';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
 interface PriceBadgeProps {
   children: React.ReactNode;
@@ -8,6 +7,7 @@ interface PriceBadgeProps {
   textColor?: string;
   bgColor?: string;
   icon?: React.ReactNode;
+  variants?: Variants;
 }
 
 export default function Badge({
@@ -17,6 +17,7 @@ export default function Badge({
   textColor = 'white',
   bgColor = 'white',
   icon,
+  variants,
 }: PriceBadgeProps) {
   const tailVariant = {
     center: 'left-1/2 -translate-x-1/2',
@@ -36,9 +37,9 @@ export default function Badge({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-      className={`relative flex ${badgePosition[tailPosition]} ${className}`}>
+      className={`relative flex ${badgePosition[tailPosition]} ${className}`}
+      variants={variants}>
       <div className="rounded-lg px-4 py-2 flex items-center gap-3" style={{ backgroundColor: bgColor }}>
-        {/* {icon && <DollarCircleIcon />} */}
         {icon}
         <span className="text-lg font-black" style={{ color: textColor }}>
           {children}

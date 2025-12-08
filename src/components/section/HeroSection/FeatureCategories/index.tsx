@@ -5,6 +5,7 @@ import MarketingIcon from '@components/base/Icons/MarketingIcon';
 import TargetIcon from '@components/base/Icons/Target';
 import FeaturedCategoryItem from '@components/composite/FeaturedCategoryItem';
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const FEATURED_CATEGORIES = [
   {
@@ -34,13 +35,26 @@ const FEATURED_CATEGORIES = [
   },
 ];
 
+const containerVariants = {
+  hidden: { transition: { staggerChildren: 0.05 } },
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
 const FeatureCategories = () => {
   return (
-    <div className="constrain hidden md:flex gap-[10px] flex-nowrap mb-[60px]">
+    <motion.div
+      className="constrain hidden md:flex gap-[10px] flex-nowrap mb-[60px]"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible">
       {FEATURED_CATEGORIES.map((category) => (
         <FeaturedCategoryItem key={category.id} icon={category.icon} title={category.title} />
       ))}
-    </div>
+    </motion.div>
   );
 };
 
