@@ -7,13 +7,15 @@ import Tooltip from '@components/base/Tooltip';
 import FeatureCategories from './FeatureCategories';
 import TalentsSection from './TalentSection';
 import { FeatureDataType, TalentDataType } from '../../../types/api';
+import BenefitSection from './BenefitSection';
 
 type HeroSectionPropsType = {
   talents: TalentDataType[];
   features: FeatureDataType[];
+  benefits: string[];
 };
 
-const HeroSection = ({ talents, features }: HeroSectionPropsType) => (
+const HeroSection = ({ talents, features, benefits }: HeroSectionPropsType) => (
   <div className="bg-hero-gradient bg-[url('/assets/hero-background.png')] bg-cover bg-center bg-no-repeat bg-blend-overlay min-h-screen overflow-hidden">
     <Header
       logo="HyperHire"
@@ -34,6 +36,9 @@ const HeroSection = ({ talents, features }: HeroSectionPropsType) => (
         {/* <TalentSection talents={mockTalents} /> */}
         <TalentsSection talentsData={talents} />
       </div>
+
+      {/* Mobile View */}
+      {benefits && <BenefitSection benefitData={benefits} />}
     </div>
 
     <FeatureCategories />

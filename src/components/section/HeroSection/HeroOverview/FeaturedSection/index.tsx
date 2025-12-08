@@ -9,13 +9,7 @@ type FeaturedSectionPropsType = {
 };
 
 const FeaturedSection = ({ featuredData }: FeaturedSectionPropsType) => (
-  <div>
-    {/* mobile view */}
-    <div className="md:hidden">
-      <CheckboxGroup className="md:hidden" items={['한국어 능력', '업무 수행 능력', '겸업 여부', '평판 조회']} />
-      <Text className="text-[#FBFF23] font-black underline decoration-auto mt-4">개발자가 필요하신가요?</Text>
-    </div>
-
+  <>
     {/* desktop view */}
     <div className="hidden md:block">
       <Text variant="subhead" className="mb-[60px] underline underline-offset-auto decoration-solid">
@@ -27,7 +21,7 @@ const FeaturedSection = ({ featuredData }: FeaturedSectionPropsType) => (
         ))}
       </div>
     </div>
-  </div>
+  </>
 );
 
 export default FeaturedSection;

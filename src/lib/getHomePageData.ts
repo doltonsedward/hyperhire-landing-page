@@ -11,23 +11,29 @@ type GetHomePageDataReturnType = {
     type: 'success' | 'error';
     data: FeatureDataType[];
   };
+  benefitRes: {
+    type: 'success' | 'error';
+    data: string[];
+  };
 };
 
-async function getHomePageData(options?: {
-  talentsCache?: RequestCache;
-  featuredCache?: RequestCache;
-  revalidate?: number;
-}): Promise<GetHomePageDataReturnType> {
-  const [talentsRes, featureRes] = await Promise.all([
+async function getHomePageData(options?: { revalidate?: number }): Promise<GetHomePageDataReturnType> {
+  const [talentsRes, featureRes, benefitRes] = await Promise.all([
     fetcher('/talents', {
-      cache: options?.talentsCache ?? 'no-store',
+      cache: 'no-store',
+      ...(options?.revalidate ? { next: { revalidate: options.revalidate } } : {}),
     }),
     fetcher('/featured', {
-      cache: options?.featuredCache ?? 'force-cache',
+      cache: 'force-cache',
+      ...(options?.revalidate ? { next: { revalidate: options.revalidate } } : {}),
+    }),
+    fetcher('/benefit', {
+      cache: 'force-cache',
+      ...(options?.revalidate ? { next: { revalidate: options.revalidate } } : {}),
     }),
   ]);
 
-  return { talentsRes, featureRes };
+  return { talentsRes, featureRes, benefitRes };
 }
 
 export default getHomePageData;
