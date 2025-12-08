@@ -1,5 +1,5 @@
 import type React from 'react';
-import { Checkbox } from '../base/Checkbox';
+import Checkbox from '../base/Checkbox';
 
 interface CheckboxGroupProps {
   items: string[];

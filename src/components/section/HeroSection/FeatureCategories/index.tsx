@@ -36,7 +36,7 @@ const FEATURED_CATEGORIES = [
 
 const FeatureCategories = () => {
   return (
-    <div className="constrain hidden md:flex gap-[10px] flex-nowrap">
+    <div className="constrain hidden md:flex gap-[10px] flex-nowrap mb-[60px]">
       {FEATURED_CATEGORIES.map((category) => (
         <FeaturedCategoryItem key={category.id} icon={category.icon} title={category.title} />
       ))}

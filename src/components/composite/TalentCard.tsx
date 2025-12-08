@@ -1,44 +1,33 @@
-import type React from 'react';
-import { Avatar } from '@components/base/Avatar';
-import { Flag } from '@components/base/Flag';
 import { SkillTag } from '@components/base/SkillTag';
+import { TalentDataType } from '../../types/api/talents';
+import Image from 'next/image';
+import Text from '@components/base/Text';
 
-interface TalentCardProps {
-  name: string;
-  avatar: string;
-  country: string;
-  experience: string;
-  skills: string[];
-  className?: string;
-}
+type TalentCardPropsType = {
+  talent: TalentDataType;
+};
 
-export const TalentCard = ({ name, avatar, country, experience, skills, className = '' }: TalentCardProps) => {
-  return (
-    <div className={`bg-white rounded-3xl p-4 sm:p-8 shadow-2xl relative w-full max-w-xs mx-auto ${className}`}>
-      <div className="flex justify-center mb-4 sm:mb-6 relative">
-        <div className="relative">
-          <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-gray-200 overflow-hidden">
-            <Avatar src={avatar} alt={name} size="lg" className="w-full h-full" />
-          </div>
-          <div className="absolute -bottom-1 -right-1 w-6 h-4 sm:w-8 sm:h-6">
-            <Flag country={country} className="w-full h-full" />
-          </div>
+const TalentCard = ({ talent }: TalentCardPropsType) => (
+  <div className="bg-white rounded-3xl shadow-2xl overflow-hidden transition-all duration-300 w-[300px] md:w-[336px]">
+    <div className="py-9 px-4 md:px-9 text-center">
+      {/* Avatar */}
+      <div className="relative mx-auto w-[64px] h-[64px] md:w-[120px] md:h-[120px] mb-6">
+        <Image src={talent.profileUrl} alt={`${talent.name} profile`} fill className=" rounded-full object-cover" />
+        <div className="absolute bottom-0 -right-2 md:right-3 w-6 h-4">
+          <Image src={talent.flagUrl} alt={`${talent.location} flag`} fill className="rounded-sm" />
         </div>
       </div>
 
-      <h3 className="text-lg sm:text-2xl font-bold text-gray-900 text-center mb-1 sm:mb-2">{name}</h3>
+      <Text className="text-lg md:text-2xl font-black leading-9 text-blue-gray-90">{talent.name}</Text>
+      <Text className="text-sm md:text-md text-[#4A77FF] font-bold">{talent.match}</Text>
 
-      <p className="text-blue-500 text-center mb-4 sm:mb-8 font-medium text-base sm:text-lg">{experience}</p>
-
-      <div className="space-y-2 sm:space-y-3">
-        {skills.map((skill, index) => (
-          <div key={index} className="flex justify-center">
-            <SkillTag variant="outline" className="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium">
-              {skill}
-            </SkillTag>
-          </div>
+      <div className="mt-8 flex flex-wrap gap-3 justify-center">
+        {talent.skills.map((skill, i) => (
+          <SkillTag key={i}>{skill}</SkillTag>
         ))}
       </div>
     </div>
-  );
-};
+  </div>
+);
+
+export default TalentCard;
