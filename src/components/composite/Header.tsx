@@ -16,7 +16,7 @@ interface HeaderProps {
 
 const Header = ({ logo, navItems, ctaLabel = 'Contact Us' }: HeaderProps) => {
   return (
-    <header className="constrain flex items-center justify-between px-6 md:px-12 py-4">
+    <header className="constrain flex items-center justify-between py-4">
       {/* <div className="text-2xl font-bold text-primary">{logo}</div> */}
       <Image src="/assets/logo.svg" alt={logo} width={114} height={21} />
       <nav className="hidden md:flex items-center gap-8">
