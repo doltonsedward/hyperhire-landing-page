@@ -1,134 +1,132 @@
 'use client';
 
-import type React from 'react';
+import { motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
-import { TalentCard } from '../../composite/TalentCard';
+import { TalentDataType } from '../../../types/api/talents';
+import TalentCard from '@components/composite/TalentCard';
 
-interface TalentData {
-  id: number;
-  name: string;
-  avatar: string;
-  country: string;
-  experience: string;
-  skills: string[];
-}
+const talentsData: TalentDataType[] = [
+  {
+    id: 1,
+    name: 'Abhishek Gupta',
+    title: '마케팅 전문가',
+    location: '인도',
+    flag: 'India Flag',
+    match: '2y+',
+    skills: ['마케팅 전문가', '인스타그램 관리', '광고 집행'],
+  },
+  {
+    id: 2,
+    name: 'Maria Silva',
+    title: 'UI/UX Designer',
+    location: '브라질',
+    flag: 'Brazil Flag',
+    match: '3y+',
+    skills: ['Figma 마스터', '모션 디자인', '브랜딩'],
+  },
+  {
+    id: 3,
+    name: '김지은',
+    title: '프론트엔드 개발자',
+    location: '한국',
+    flag: 'South Korea Flag',
+    match: '4y+',
+    skills: ['React', 'TypeScript', 'Next.js'],
+  },
+  {
+    id: 4,
+    name: 'Alex Chen',
+    title: '백엔드 엔지니어',
+    location: '대만',
+    flag: 'Taiwan Flag',
+    match: '5y+',
+    skills: ['Node.js', 'Python', 'AWS'],
+  },
+  {
+    id: 5,
+    name: 'Sofia Müller',
+    title: '데이터 사이언티스트',
+    location: '독일',
+    flag: 'Germany Flag',
+    match: '3y+',
+    skills: ['Python', 'ML', 'TensorFlow'],
+  },
+];
 
-interface TalentSliderProps {
-  talents: TalentData[];
-  className?: string;
-}
-
-const TalentSection = ({ talents, className = '' }: TalentSliderProps) => {
+export default function TalentsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % talents.length);
+  const next = () => {
+    setCurrentIndex((prev) => (prev + 1) % talentsData.length);
   };
 
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + talents.length) % talents.length);
+  const prev = () => {
+    setCurrentIndex((prev) => (prev - 1 + talentsData.length) % talentsData.length);
   };
 
-  const getCardStyle = (index: number) => {
-    const position = (index - currentIndex + talents.length) % talents.length;
+  // Fungsi buat hitung posisi relatif setiap card terhadap currentIndex
+  const getPosition = (index: number) => {
+    const diff = index - currentIndex;
+    const normalizedDiff = diff >= 0 ? diff : diff + talentsData.length;
 
-    if (position === 0) {
-      // Front card
-      return {
-        zIndex: 30,
-        transform: 'translateX(0) translateY(0) scale(1)',
-        opacity: 1,
-      };
-    } else if (position === 1) {
-      // Second card (slightly behind and to the right)
-      return {
-        zIndex: 20,
-        transform: 'translateX(12px) translateY(6px) scale(0.95)',
-        opacity: 0.8,
-      };
-    } else if (position === 2) {
-      // Third card (more behind and to the right)
-      return {
-        zIndex: 10,
-        transform: 'translateX(24px) translateY(12px) scale(0.9)',
-        opacity: 0.6,
-      };
-    } else {
-      // Hidden cards
-      return {
-        zIndex: 0,
-        transform: 'translateX(36px) translateY(18px) scale(0.85)',
-        opacity: 0,
-      };
-    }
+    if (normalizedDiff === 0) return 'center';
+    if (normalizedDiff === 1 || normalizedDiff === -talentsData.length + 1) return 'right';
+    if (normalizedDiff === talentsData.length - 1 || normalizedDiff === -1) return 'left';
+    return 'far'; // jauh (nggak keliatan)
   };
 
   return (
-    <div className={`relative w-full max-w-xs sm:max-w-sm mx-auto h-80 sm:h-96 ${className}`}>
-      {/* Stacked Cards */}
-      <div className="relative w-full h-full">
-        {talents.map((talent, index) => (
-          <div
-            key={talent.id}
-            className="absolute inset-0 transition-all duration-500 ease-out"
-            style={getCardStyle(index)}>
-            <TalentCard
-              name={talent.name}
-              avatar={talent.avatar}
-              country={talent.country}
-              experience={talent.experience}
-              skills={talent.skills}
-              className="h-full"
-            />
-          </div>
-        ))}
-      </div>
+    <div className="relative w-full max-w-5xl mx-auto py-20 overflow-hidden">
+      <div className="relative h-96 flex items-center justify-center items-center">
+        {/* Arrow Left */}
+        <button
+          onClick={prev}
+          className="absolute left-8 z-50 bg-white/90 hover:bg-white rounded-full p-4 shadow-xl transition-all hover:scale-110">
+          <ChevronLeft className="w-10 h-10 text-gray-800" />
+        </button>
 
-      {/* Navigation Buttons */}
-      <button
-        onClick={prevSlide}
-        className="absolute -left-2 sm:left-4 top-1/2 -translate-y-1/2 z-40 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full shadow-xl flex items-center justify-center text-gray-600 hover:text-gray-800 transition-all hover:shadow-2xl"
-        aria-label="Previous slide">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M15 18L9 12L15 6"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </button>
+        {/* Arrow Right */}
+        <button
+          onClick={next}
+          className="absolute right-8 z-50 bg-white/90 hover:bg-white rounded-full p-4 shadow-xl transition-all hover:scale-110">
+          <ChevronRight className="w-10 h-10 text-gray-800" />
+        </button>
 
-      <button
-        onClick={nextSlide}
-        className="absolute -right-2 sm:right-4 top-1/2 -translate-y-1/2 z-40 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full shadow-xl flex items-center justify-center text-gray-600 hover:text-gray-800 transition-all hover:shadow-2xl"
-        aria-label="Next slide">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M9 18L15 12L9 6"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </button>
+        {/* Cards Container dengan perspective */}
+        <div className="relative w-full h-full flex justify-center items-center" style={{ perspective: '1000px' }}>
+          {talentsData.map((talent, index) => {
+            const position = getPosition(index);
 
-      {/* Pagination Dots */}
-      <div className="absolute -bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 z-40 flex space-x-2">
-        {talents.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`w-2 h-2 rounded-full transition-all ${
-              index === currentIndex ? 'bg-white shadow-lg' : 'bg-white/50 hover:bg-white/75'
-            }`}
-          />
-        ))}
+            // Tentukan style berdasarkan posisi
+            let cardStyle = {};
+            let containerClass = '';
+
+            if (position === 'center') {
+              cardStyle = { x: 0, y: 0, scale: 1, opacity: 1, zIndex: 30 };
+              containerClass = 'ring-4 ring-cyan-400';
+            } else if (position === 'left') {
+              cardStyle = { x: -200, y: 20, scale: 0.85, opacity: 0.6, zIndex: 20 };
+            } else if (position === 'right') {
+              cardStyle = { x: 200, y: 20, scale: 0.85, opacity: 0.6, zIndex: 20 };
+            } else {
+              // Jauh banget, sembunyiin biar nggak ganggu animasi
+              cardStyle = { x: 0, scale: 0.7, opacity: 0, zIndex: 1 };
+            }
+
+            return (
+              <motion.div
+                key={talent.id}
+                layout
+                transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }} // easing super smooth
+                animate={cardStyle}
+                className={`absolute ${containerClass}`}>
+                <TalentCard talent={talent} isActive={position === 'center'} />
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
-};
-
-export default TalentSection;
+}

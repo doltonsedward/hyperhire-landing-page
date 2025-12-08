@@ -1,36 +1,9 @@
-import { Header } from '@components/composite/Header';
+import Header from '@components/composite/Header';
 import HeroOverview from './HeroOverview';
 import React from 'react';
 import Tooltip from '@components/base/Tooltip';
-import TalentSection from './TalentSection';
 import FeatureCategories from './FeatureCategories';
-
-const mockTalents = [
-  {
-    id: 1,
-    name: 'Abhishek Gupta',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
-    country: 'colombia',
-    experience: '마케팅 · 2y+',
-    skills: ['마케팅 콘텐츠 제작', '인스타그램 관리', '트위터 관리', '블로그 글 작성'],
-  },
-  {
-    id: 2,
-    name: 'Maria Santos',
-    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
-    country: 'brazil',
-    experience: 'UI/UX · 3y+',
-    skills: ['UI 디자인', 'UX 리서치', '프로토타이핑', '사용자 테스트'],
-  },
-  {
-    id: 3,
-    name: 'Carlos Rodriguez',
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
-    country: 'argentina',
-    experience: '개발 · 4y+',
-    skills: ['React 개발', 'Node.js', 'TypeScript', 'API 개발'],
-  },
-];
+import TalentsSection from './TalentSection';
 
 const HeroSection = () => {
   return (
@@ -51,7 +24,8 @@ const HeroSection = () => {
         {/* Right Content */}
         <div className="mt-4 lg:mt-0 justify-center w-full px-4 sm:px-0">
           <Tooltip />
-          <TalentSection talents={mockTalents} />
+          {/* <TalentSection talents={mockTalents} /> */}
+          <TalentsSection />
         </div>
       </div>
 
